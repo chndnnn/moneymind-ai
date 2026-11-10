@@ -1,51 +1,129 @@
 
+# ==========================================
 # Dependencies
+# ==========================================
 node_modules/
 **/node_modules/
+jspm_packages/
+bower_components/
+.pnp.*
 
+# ==========================================
 # Environment variables and secrets
+# ==========================================
 .env
 .env.*
 !.env.example
 
+# ==========================================
 # Build outputs
+# ==========================================
 dist/
 build/
 .next/
+out/
 .expo/
+.expo-shared/
 web-build/
+.nuxt/
+.output/
+.svelte-kit/
+.astro/
+.vuepress/dist/
 
+# ==========================================
 # Logs
+# ==========================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
+# ==========================================
 # Cache
+# ==========================================
 .cache/
 .parcel-cache/
 .turbo/
+.nyc_output/
 coverage/
+.npm/
+.eslintcache
+.stylelintcache
+.vite/
+.pnpm-store/
+.svelte-kit/
 
+# ==========================================
+# TypeScript
+# ==========================================
+*.tsbuildinfo
+
+# ==========================================
+# React Native / Expo
+# ==========================================
+.expo/
+.expo-shared/
+
+# ==========================================
+# Next.js / Vercel
+# ==========================================
+.vercel/
+
+# ==========================================
+# Runtime data
+# ==========================================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ==========================================
 # OS files
+# ==========================================
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# IDE and editor
+# ==========================================
+# IDE / Editors
+# ==========================================
 .vscode/*
 !.vscode/extensions.json
 .idea/
+.vscode-test/
 
+# ==========================================
 # Temporary files
+# ==========================================
 *.tmp
 *.temp
+*.tgz
 
-# TypeScript
-*.tsbuildinfo
+# ==========================================
+# Other generated files
+# ==========================================
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+lib-cov/
+.grunt/
+web_modules/
+.fusebox/
+.dynamodb/
+.firebase/
+.tern-port
+.docusaurus/
+.serverless/
 
-# React Native / Expo
-.expo-shared/
-
-# Testing
-.nyc_output/
+# ==========================================
+# Yarn
+# ==========================================
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn-integrity
