@@ -127,3 +127,9 @@ web_modules/
 !.yarn/sdks
 !.yarn/versions
 .yarn-integrity
+
+/generated/prisma
+
+.windsurf/
+.agents/
+.claude/
