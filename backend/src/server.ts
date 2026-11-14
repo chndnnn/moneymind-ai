@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import transactionRoutes from './routes/transaction.routes.js';
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.get('/api/health', (req, res) => {
     message: 'MoneyMind AI backend is running',
   });
 });
+
+app.use('/api/transactions', transactionRoutes);
 
 const PORT = process.env.PORT || 5001;
 
