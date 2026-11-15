@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import transactionRoutes from './routes/transaction.routes.js';
+import assistantRoutes from './routes/assistant.routes.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/assistant', assistantRoutes);
 
 const PORT = process.env.PORT || 5001;
 
