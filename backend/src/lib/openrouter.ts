@@ -1,0 +1,12 @@
+import { OpenRouter } from '@openrouter/sdk';
+
+if (!process.env.OPENROUTER_API_KEY) {
+  throw new Error('OPENROUTER_API_KEY is missing');
+}
+
+const openrouter = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  appTitle: 'MoneyMind AI',
+});
+
+export default openrouter;
