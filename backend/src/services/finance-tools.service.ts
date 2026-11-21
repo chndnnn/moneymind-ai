@@ -52,3 +52,52 @@ export async function getMonthlySummary(month: string) {
     savings: totalIncome - totalExpenses,
   };
 }
+
+
+export async function getMerchantSummary(month: string) {
+  // Validate month format
+  if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) {
+    throw new Error('Invalid month format. Expected YYYY-MM');
+  }
+
+  // Calculate month boundaries
+  const startDate = new Date(`${month}-01T00:00:00.000Z`);
+  const endDate = new Date(startDate);
+  endDate.setUTCMonth(endDate.getUTCMonth() + 1);
+
+  // Group debit transactions by recipient
+  const merchants = await prisma.transaction.groupBy({
+    by: ['recipientName'],
+    where: {
+      type: 'DEBIT',
+      recipientName: {
+        not: null,
+      },
+      transactionDate: {
+        gte: startDate,
+        lt: endDate,
+      },
+    },
+    _sum: {
+      amount: true,
+    },
+    _count: {
+      id: true,
+    },
+    orderBy: {
+      _sum: {
+        amount: 'desc',
+      },
+    },
+  });
+
+  return {
+    month,
+    merchants: merchants.map((merchant) => ({
+      name: merchant.recipientName,
+      totalSpent: Number(merchant._sum.amount ?? 0),
+      transactionCount: merchant._count.id,
+    })),
+  };
+}
+
